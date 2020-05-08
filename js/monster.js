@@ -7,6 +7,8 @@ class Monster {
     this.teleportCounter = 2;
     this.offsetX = 0;
     this.offsetY = 0;
+    this.lastMove = [-1, 0];
+    this.bonusAttack = 0;
   }
 
   update() {
@@ -37,12 +39,14 @@ class Monster {
   tryMove(dx, dy) {
     const newTile = this.tile.getNeighbor(dx, dy);
     if (newTile.passable) {
+      this.lastMove = [dx, dy];
       if (!newTile.monster) {
         this.move(newTile);
       } else if (this.isPlayer != newTile.monster.isPlayer) {
         this.attackedThisTurn = true;
         newTile.monster.stunned = true;
-        newTile.monster.hit(1);
+        newTile.monster.hit(1 + this.bonusAttack);
+        this.bonusAttack = 0;
 
         shakeAmount = 5;
 

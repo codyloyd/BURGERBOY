@@ -54,6 +54,18 @@ class Tile {
     if (this.treasure) {
       drawSprite(11, this.x, this.y);
     }
+
+    if (this.effectCounter) {
+      this.effectCounter--;
+      ctx.globalAlpha = this.effectCounter / 30;
+      drawSprite(this.effect, this.x, this.y);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  setEffect(sprite) {
+    this.effect = sprite;
+    this.effectCounter = 30;
   }
 
   stepOn(monster) {
