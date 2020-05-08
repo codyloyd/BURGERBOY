@@ -87,7 +87,7 @@ spells = {
       [1, 0],
     ];
     for (let k = 0; k < directions.length; k++) {
-      boltTravel(directions[k], 15 + Math.abs(directions[k][1]), 2);
+      boltTravel(directions[k], 14 + Math.abs(directions[k][1]), 2);
     }
   },
 };
