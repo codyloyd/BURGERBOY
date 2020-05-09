@@ -56,16 +56,24 @@
     // generateLevel();
     // const player = new Player(randomPassableTile());
 
-    document.querySelector("html").onkeypress = ({ key }) => {
+    document.querySelector("html").onkeydown = ({ key }) => {
       if (gameState == "title") {
         startGame();
       } else if (gameState == "dead") {
         showTitle();
       } else if (gameState == "running") {
         if (key == "w") player.tryMove(0, -1);
+        if (key == "k") player.tryMove(0, -1);
+        if (key == "ArrowUp") player.tryMove(0, -1);
         if (key == "s") player.tryMove(0, 1);
+        if (key == "j") player.tryMove(0, 1);
+        if (key == "ArrowDown") player.tryMove(0, 1);
         if (key == "a") player.tryMove(-1, 0);
+        if (key == "h") player.tryMove(-1, 0);
+        if (key == "ArrowLeft") player.tryMove(-1, 0);
         if (key == "d") player.tryMove(1, 0);
+        if (key == "l") player.tryMove(1, 0);
+        if (key == "ArrowRight") player.tryMove(1, 0);
 
         if (key >= 1 && key <= 9) {
           player.castSpell(key - 1);
